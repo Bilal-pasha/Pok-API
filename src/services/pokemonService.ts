@@ -1,7 +1,8 @@
-import { Pokemon } from "@/components/pages/types";
-import axios from "axios";
+import { Pokemon } from "@/types";
+import { API_ENDPOINTS } from "@/utils/api.endpoints";
+import http from '@/utils/axiosConfig';
 
 export async function fetchPokemon(name: string): Promise<Pokemon> {
-  const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-  return res.data;
+  const { data } = await http.get(API_ENDPOINTS.POKEMON + name.toLowerCase());
+  return data;
 };

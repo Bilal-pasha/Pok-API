@@ -1,19 +1,16 @@
-"use client";
+import { Input } from "@/components/atoms/input";
+import { UseFormRegisterReturn } from "react-hook-form";
 
-import { Input } from "@/components/ui/input";
+interface SearchInputProps {
+  register?: UseFormRegisterReturn;
+  placeholder?: string;
+  className?: string;
+}
 
 export default function SearchInput({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (val: string) => void;
-}) {
-  return (
-    <Input
-      placeholder="Enter Pokémon name..."
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  );
+  register,
+  placeholder = "Enter Pokémon name...",
+  className = "",
+}: SearchInputProps) {
+  return <Input {...register} placeholder={placeholder} className={`bg-white ${className}`} />;
 }
